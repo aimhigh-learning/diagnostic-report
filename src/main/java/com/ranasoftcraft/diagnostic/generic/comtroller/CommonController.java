@@ -19,20 +19,15 @@ public class CommonController {
 		return "dashboard/welcome";
 	}
 	
-	@GetMapping("/foot-value")
-	public String footValue(Model model) {
-		return "dashboard/foot-value";
+	@GetMapping({"/patient"})
+	public String patient(Model model) {
+		return "patients/save-edit";
 	}
 	
-	
-	@GetMapping("/players")
-	public String playesr(Model model) {
-		return "dashboard/players";
+	@GetMapping({"/patient-list"})
+	public String patientList(Model model) {
+		return "patients/list";
 	}
 	
-	@GetMapping("/stats")
-	public String stats(Model model) {
-		return "dashboard/stats";
-	}
 	
 }

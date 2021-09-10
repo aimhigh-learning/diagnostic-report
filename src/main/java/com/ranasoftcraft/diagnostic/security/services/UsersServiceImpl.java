@@ -78,7 +78,7 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
 
 	private UserDetails buildUserForAuthentication(Users user, List<GrantedAuthority> authorities) {
 		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-				user.getIsEnabled(), true, true, true, authorities);
+				true, true, true, true, authorities);
 	}
 	
 	@Override
