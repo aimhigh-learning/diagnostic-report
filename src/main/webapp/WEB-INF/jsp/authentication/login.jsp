@@ -11,7 +11,7 @@
 <link href="bootstrap-5.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container-fluid  h-100">
+	<div class="container-fluid  h-100" style="background-color: #e3f2fd;">
 		<div
 			class="row d-flex flex-column min-vh-100 justify-content-center align-items-center">
 			<ranasoftcraft:if test="${errorMsg != null}">
@@ -57,15 +57,19 @@
 										for="exampleCheck1">Remember me</label>
 								</div>
 
+								<!-- 
+
 								<div class="col-6" style="text-align: right;">
 									<label  class="form-check-label">
 										<a href="/signup">Signup</a>
 									</label>
 								</div>
 
+ 								-->
 							</div>
 
 						</div>
+
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>

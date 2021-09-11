@@ -16,45 +16,27 @@
 			</div>
 		</div>
 
-		<form id="signup_form">
+		<form id="patient-form">
 			<div class="row">
 				<div class="col-4">
 					<div class="mb-3">
-						<label for="userNameInput" class="form-label">User name</label> <input
+						<label for="userNameInput" class="form-label">Patient Id</label> <input
 							type="text" name="username" class="form-control"
 							id="userNameInput" aria-describedby="userNameHelp">
 						<div id="userNameHelp" class="form-text">Enter unique
-							username , will not share to anyone !!</div>
+							patient id , will not share to anyone !!</div>
 					</div>
 				</div>
 
 				<div class="col-4">
 					<div class="mb-3">
-						<label for="exampleInputPassword1" class="form-label">Password</label>
-						<input type="password" class="form-control" name="password"
-							id="exampleInputPassword1" aria-describedby="passWordHelp">
-						<div id="passWordHelp" class="form-text">More complex
-							password will have be more secured</div>
+						<label for="nameCtrl" class="form-label">Name</label> <input
+							type="text" class="form-control" name="name" id="name"
+							aria-describedby="nameHelp">
+						<div id="nameHelp" class="form-text">Patient name !</div>
 					</div>
 				</div>
 
-				<div class="col-4">
-					<div class="mb-3">
-						<label for="emailCtrl" class="form-label">Email</label> <input
-							type="text" class="form-control" name="email" id="emailCtrl"
-							aria-describedby="emailHelp">
-						<div id="emailHelp" class="form-text">This will use for
-							notification</div>
-					</div>
-				</div>
-
-
-
-			</div>
-
-
-
-			<div class="row">
 				<div class="col-4">
 
 					<div class="mb-3">
@@ -64,38 +46,117 @@
 					</div>
 				</div>
 
+
+
+			</div>
+
+
+
+			<div class="row">
+
+				<div class="col-4">
+
+					<div class="mb-3">
+						<label for="age" class="form-label">Age</label> <input type="text"
+							class="form-control" name="age" id="age"
+							aria-describedby="ageHelp">
+
+						<div id="ageHelp" class="form-text">Enter the age of patient
+							!</div>
+					</div>
+				</div>
+
+
 				<div class="col-4">
 					<div class="mb-3">
-						<label for="position" class="form-label">Position</label> <select
-							class="form-control" name="position" id="position"
-							aria-describedby="positionHelp">
-							<option value="Goalkeeper">Goalkeeper</option>
-							<option value="Defender">Defender</option>
-							<option value="Midfielder">Midfielder</option>
-							<option value="Forward">Forward</option>
+						<label for="geneder" class="form-label">Gender</label> <select
+							class="form-control" name="geneder" id="geneder"
+							aria-describedby="genederHelp">
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="other">Other</option>
 						</select>
-						<div id="positionHelp" class="form-text">This is the player
-							position where they want to play !!!</div>
+						<div id="genederHelp" class="form-text">Please select the
+							gender type !</div>
 					</div>
 				</div>
 
 				<div class="col-4">
 
 					<div class="mb-3">
-						<label for="role" class="form-label">Role</label> <select
-							class="form-control" name="role" id="role">
-							<option value="101">User</option>
-							<option value="103">Player</option>
-							<option value="102">Administrator</option>
-						</select>
+						<label for="referredByDr" class="form-label">Referred By
+							Dr.</label> <input type="text" class="form-control" name="referredByDr"
+							id="referredByDr" aria-describedby="referredByDrHelp">
+
+						<div id="referredByDrHelp" class="form-text">Please enter
+							the doctor name if referred !!</div>
 					</div>
 				</div>
 			</div>
 
-			<button type="button" class="btn btn-primary" onclick="signUp(this)">Submit</button>
+
+			<div class="row">
+
+				<div class="col-4">
+					<div class="mb-3">
+						<label for="consultByDr" class="form-label">Consult by Dr.</label>
+						<input type="text" class="form-control" name="consultByDr"
+							id="consultByDr" aria-describedby="consultByDrHelp">
+
+						<div id="consultByDrHelp" class="form-text">Please enter
+							consult Dr. name</div>
+					</div>
+				</div>
+
+
+				<div class="col-4">
+					<div class="mb-3">
+						<label for="reportType" class="form-label">Report for</label> <select
+							class="form-control" name="reportType" multiple id="reportType"
+							aria-describedby="reportTypeHelp">
+							<option value="blodd_glucose">Blood Glucose</option>
+							<option value="widle_test">Widle Test</option>
+							<option value="other">Other</option>
+						</select>
+						<div id="reportTypeHelp" class="form-text">Please select the type of report !!</div>
+					</div>
+				</div>
+
+
+				<div class="col-4">
+					<div class="mb-3">
+						<label for="address" class="form-label">Address</label>
+						<textarea rows="3" cols="" class="form-control" name="address"
+							id="address" aria-describedby="addressHelp"></textarea>
+						<div id="addressHelp" class="form-text">Please enter
+							Patient's address !</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="row">
+				<div class="col-1">
+					<button type="button" class="btn btn-danger" onclick="reset(this)">Reset</button>
+				</div>
+				
+				<div class="col-1">
+					<button type="button" class="btn btn-primary" onclick="signUp(this)">Submit</button>
+				</div>
+				
+				<div class="col-8"></div>
+			
+			</div>
+
+						
 		</form>
 
 	</div>
+
+	<div class="row" style="height: 20px"></div>
+
 </div>
 
+<script src="bootstrap-5.0/javascripts/patient-save-update.js"></script>
 <%@include file="/WEB-INF/jsp/common/footer.jsp"%>

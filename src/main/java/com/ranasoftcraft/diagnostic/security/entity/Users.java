@@ -24,6 +24,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ranasoftcraft.diagnostic.patient.entity.PatientInfo;
 
 import lombok.Data;
 
@@ -71,5 +72,8 @@ public class Users {
     @ManyToMany(fetch = FetchType.LAZY)
 	private Set<Roles> roles;
 
+    
+    @Transient
+    private PatientInfo patientInfo;
 
 }
