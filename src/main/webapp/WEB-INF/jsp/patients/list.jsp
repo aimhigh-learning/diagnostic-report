@@ -16,7 +16,7 @@
 				<th>Action</th>
 			</tr>
 		</thead>
-		<tbody>
+		<!-- <tbody>
 			<tr>
 				<td>Tiger Nixon</td>
 				<td>System Architect</td>
@@ -473,7 +473,7 @@
 				<td>2011/01/25</td>
 				<td>$112,000</td>
 			</tr>
-		</tbody>
+		</tbody> -->
 		
 	</table>
 
