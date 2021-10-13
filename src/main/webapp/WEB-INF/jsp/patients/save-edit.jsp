@@ -3,15 +3,13 @@
 <div class="container-fluid ">
 	<div class="row">
 		<div class="row" style="display: none" id="errorState">
-			<div class="col-4"></div>
-			<div class="col-4 alert alert-danger" role="alert">
+			<div class="col-12 alert alert-danger" role="alert">
 				<span id="errorMessage"></span>
 			</div>
 		</div>
 
 		<div class="row" style="display: none" id="successState">
-			<div class="col-4"></div>
-			<div class="col-4 alert alert-success" role="alert">
+			<div class="col-12 alert alert-success" role="alert">
 				<span id="successMessage"></span>
 			</div>
 		</div>
@@ -157,6 +155,6 @@
 	<div class="row" style="height: 20px"></div>
 
 </div>
-
+<script src="bootstrap-5.0/js/jquery.min.js"></script>
 <script src="bootstrap-5.0/javascripts/patient-save-update.js"></script>
 <%@include file="/WEB-INF/jsp/common/footer.jsp"%>

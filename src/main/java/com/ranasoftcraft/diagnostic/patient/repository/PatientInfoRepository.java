@@ -16,5 +16,4 @@ import com.ranasoftcraft.diagnostic.patient.entity.PatientInfo;
 public interface PatientInfoRepository extends PagingAndSortingRepository<PatientInfo, String>{
 
 	
-	
 }

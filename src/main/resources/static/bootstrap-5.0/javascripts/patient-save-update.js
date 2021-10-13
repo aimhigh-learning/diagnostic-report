@@ -28,7 +28,7 @@ function signUp(obj) {
 	
 	console.log(request);
 	$.ajax({
-		url : `/signup?role=${role}`,
+		url : `api/patient/save-update`,
 		cache : false,
 		type : "post",
 		contentType : "application/json",
@@ -36,9 +36,9 @@ function signUp(obj) {
 		data : JSON.stringify(request),
 		success : function(r) {
 			console.log(r);
-			$('#signup_form')[0].reset();
+			$('#patient-form')[0].reset();
 			$('#successState').show();
-			$('#successMessage').text('Successfully signup !! Please login with same credentials');
+			$('#successMessage').text('Successfully register !!');
 		},
 		error : function(e) {
 			console.log(e);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ranasoftcraft.diagnostic.generic.comtroller;
+package com.ranasoftcraft.diagnostic.generic.controller;
 
 import java.util.Optional;
 

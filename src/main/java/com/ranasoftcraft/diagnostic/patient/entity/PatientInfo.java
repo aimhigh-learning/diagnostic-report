@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.ranasoftcraft.diagnostic.security.entity.Users;
+
 import lombok.Data;
 /**
  * 
@@ -50,6 +52,9 @@ public class PatientInfo implements Serializable {
 	
 	@Transient
 	private List<PatientReports> reports;
+	
+	@Transient
+	private Users users;
 	
 	enum Geneder{
 		male,
