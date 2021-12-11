@@ -69,11 +69,11 @@ public class PatientReports implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	enum ReportType {
+	public enum ReportType {
 		blodd_glucose, widle_test, other
 	}
 
-	enum Status {
+	public enum Status {
 		init, start, inp, done
 	}
 

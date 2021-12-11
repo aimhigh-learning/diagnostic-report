@@ -3,9 +3,13 @@
  */
 package com.ranasoftcraft.diagnostic.patient.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -24,12 +28,15 @@ import com.ranasoftcraft.diagnostic.security.entity.Roles;
 import com.ranasoftcraft.diagnostic.security.entity.Users;
 import com.ranasoftcraft.diagnostic.security.services.UsersService;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author sandeep.rana
  *
  */
 @Service
 @Transactional
+@Slf4j
 public class PatientInfoServiceImpl implements PatientInfoService {
 
 	
@@ -53,6 +60,19 @@ public class PatientInfoServiceImpl implements PatientInfoService {
 		user.setRoles(roles);
 		user.setPassword(StringUtils.hasText(user.getPassword()) ? user.getPassword() : user.getUsername());
 		userService.signUp(user);
+		log.info("After user details saved {} ", user.getUsername());
+		// save the patient report type 
+		if(user.getPatientInfo().getReports() !=null && !user.getPatientInfo().getReports().isEmpty()) {
+			List<PatientReports> requestReport = user.getPatientInfo().getReports();
+			requestReport.forEach(r->{
+				r.setStatus(PatientReports.Status.init);
+				r.setPatientId(user.getUsername());
+				r.setReportId((String) UUID.randomUUID().toString().subSequence(0, 24));
+			});
+			patientReportsRepository.saveAll(requestReport);
+			log.info("After all report type saved {} ", requestReport.stream().map(m-> m.getReportType()).collect(Collectors.toList()));
+		}
+		
 		return patientInfoRepository.save(user.getPatientInfo());
 	}
 	
@@ -67,6 +87,7 @@ public class PatientInfoServiceImpl implements PatientInfoService {
 		final Page<PatientInfo> lst =  patientInfoRepository.findAll(pageable);
 		lst.getContent().forEach(fr->{
 			fr.setUsers(userService.findByUserId(fr.getPatientId()).get());
+			fr.setReports(patientReportsRepository.findByPatientId(fr.getPatientId()));
 		});
 		return lst;
 	}

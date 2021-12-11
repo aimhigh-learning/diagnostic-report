@@ -1,7 +1,11 @@
 <%@include file="/WEB-INF/jsp/common/header.jsp"%>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.datatables.net/1.11.1/css/dataTables.bootstrap5.min.css"
+	rel="stylesheet">
 
 <div class="container-fluid ">
 	<div class="row" style="padding-top: 10px"></div>
@@ -9,27 +13,61 @@
 		<thead>
 			<tr>
 				<th>Name</th>
-				<th>Disease </th>
+				<th>Reports</th>
 				<th>Phone</th>
-				<th>Email</th>
+				<th>Gender</th>
 				<th>Address</th>
+				<th>Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>
-		
+
 	</table>
 
 </div>
 
+<!--  Modal for the generate report  -->
 
-<script
-	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<div class="modal fade" id="generateReportModal" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="generateReportModalTitle">Generate
+					report (TODO)</h5>
+
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid row">
+					<div class="col-4">
+
+						<div class="mb-3">
+							<label for="age" class="form-label">Age</label> <input
+								type="text" class="form-control" name="age" id="age"
+								aria-describedby="ageHelp">
+
+							<div id="ageHelp" class="form-text">Enter the age of
+								patient !</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script
 	src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script
 	src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 
-<script
-	src="bootstrap-5.0/javascripts/patient-list.js"></script>
-	
+<script src="bootstrap-5.0/javascripts/patient-list.js"></script>
+
 <%@include file="/WEB-INF/jsp/common/footer.jsp"%>

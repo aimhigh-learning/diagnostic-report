@@ -12,11 +12,12 @@ $(document).ready(function() {
 			data.content.forEach(f=>{
 				array.push({					
 					name :f.name || '',
-					disease:'',
+					reports: getReportType(f.reports),
 					phone:f?.users?.phone || '',
-					email:f?.email?.email || '',
+					geneder:f?.geneder || '',
 					address:f.address || '',
-					actions:''
+					status: '',
+					actions: f
 				});
 				
 			});
@@ -30,6 +31,25 @@ $(document).ready(function() {
 
 });
 
+function getReportType(reports) {
+	const fl = [];
+	reports.forEach(f=>{
+		switch(f.reportType) {
+			case 'widle_test':
+				fl.push('Widle Test');
+				break;
+				
+			case 'blodd_glucose':
+				fl.push('Blood Glucose');
+				break;
+				
+			default:
+				fl.push('Other');
+				break;
+		}
+	});
+	return fl.toString();
+}
 
 function __inItDatatable(data) {
 	console.log(data);
@@ -42,10 +62,27 @@ function __inItDatatable(data) {
 	    pageLength: 10,
 		columns : [
 			{ "data": "name" },
-			{ "data": "disease" },
+			{ "data": "reports" },
 			{ "data": "phone" },
-			{ "data": "email" },
+			{ "data": "geneder" },
 			{ "data": "address" },
-			{ "data": "actions" }]
+			{ "data": "status" },
+			{ "data": "actions", render : function ( data, type, row, meta ) {
+	              					return `<div class="row"> ${actionsBtnCnt(data)}</div>`;
+			}}
+			]
 	});
+}
+
+function actionsBtnCnt(row) {
+	let data = ``;
+	row.reports.forEach(f=>{
+		data += `<button type="button" class="btn btn-info col-4" reportId="${f.reportId}" onclick="generateReport('${f.reportId}', '${row.patientId}')">Generate ${getReportType([f])}</button> <span class="col-1"></span>`;
+	});
+	return data;
+}
+
+function generateReport(reportId, patientId) {
+	$('#generateReportModal').modal('show')
+	console.log(`${reportId} - ${patientId}`);
 }

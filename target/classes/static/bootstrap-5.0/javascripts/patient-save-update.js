@@ -14,15 +14,31 @@ function signUp(obj) {
 //	request.position = $('#position').val();
 //	const role = $('#role').val();
 	
+	
+	const reports  = $('#reportType').val();
+	const sendTheRe = [];
+	if(reports) {
+		reports.forEach(r=>{
+			sendTheRe.push({
+				patientId: request.username,
+				reportType: r,
+				status: 'init'
+			});
+		});
+	}
+	
+	
 	request.patientInfo = {
 		patientId: request.username,
 		name: $('#name').val(),
 		age: $('#age').val(),
 		geneder: $('#geneder').val(),
-		
+		address: $('#address').val(),
+		referredByDr: $('#referredByDr').val(),
+		consultByDr: $('#consultByDr').val(),
+		reports:sendTheRe
 			
 	}
-	
 	
 	
 	
