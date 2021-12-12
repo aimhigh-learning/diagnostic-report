@@ -38,21 +38,16 @@
 					report (TODO)</h5>
 
 			</div>
-			<div class="modal-body">
-				<div class="container-fluid row">
-					<div class="col-4">
-
-						<div class="mb-3">
-							<label for="age" class="form-label">Age</label> <input
-								type="text" class="form-control" name="age" id="age"
-								aria-describedby="ageHelp">
-
-							<div id="ageHelp" class="form-text">Enter the age of
-								patient !</div>
-						</div>
-					</div>
-				</div>
+			
+			
+			
+			<div class="modal-body" id="rBody">
+				
+				
 			</div>
+			
+			
+			
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary">Save changes</button>

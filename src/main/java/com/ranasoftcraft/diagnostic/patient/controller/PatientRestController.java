@@ -39,5 +39,6 @@ public class PatientRestController {
 	public Page<PatientInfo> list(@RequestParam Integer _page , @RequestParam Integer _size) {
 		return patientInfoService.getPatientList(_page, _size);
 	}
+	
 
 }
