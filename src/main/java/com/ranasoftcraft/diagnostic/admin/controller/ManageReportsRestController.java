@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ManageReportsRestController {
 	
 	
-	@GetMapping("/")
-	public void availableReportTypes() {
-		
-	}
+//	@GetMapping("/")
+//	public void availableReportTypes() {
+//		
+//	}
 	
 
 }
