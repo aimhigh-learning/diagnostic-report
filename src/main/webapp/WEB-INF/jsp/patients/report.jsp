@@ -10,6 +10,19 @@
 <link href="bootstrap-5.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-5.0/css/report.css" rel="stylesheet">
 
+<link rel="stylesheet"
+      src="bootstrap-5.0/css/report.css"
+      type="text/css"
+      media="print" />
+      
+<style type="text/css">
+@media print {
+	.excluse-print {
+		display: none;
+	}
+}
+</style>
+
 </head>
 <body>
 
@@ -18,8 +31,7 @@
 
 		<div class="col-8">
 			<div class="row">
-				<nav class="navbar navbar-expand-lg navbar-light"
-					style="background-color: #e3f2fd;">
+				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container-fluid">
 						<a class="navbar-brand">Logo</a>
 						<div style="width: 100%">
@@ -201,6 +213,9 @@
 	</div>
 
 
+
+
+	<button onclick="window.print();" class="excluse-print">Print</button>
 
 
 

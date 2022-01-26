@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ranasoftcraft.diagnostic.security.services;
 
 import java.time.Instant;

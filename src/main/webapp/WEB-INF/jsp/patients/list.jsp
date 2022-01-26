@@ -57,7 +57,8 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="bootstrap-5.0/js/jquery-3.6.0.min.js"></script>
+
 <script
 	src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script
