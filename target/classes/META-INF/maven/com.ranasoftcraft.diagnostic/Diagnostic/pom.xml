@@ -9,8 +9,9 @@
 		<version>2.5.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ranasoftcraft.football</groupId>
-	<artifactId>Football</artifactId>
+	
+	<groupId>com.ranasoftcraft.diagnostic</groupId>
+	<artifactId>Diagnostic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Football</name>
 	<description>Demo project for Spring Boot</description>

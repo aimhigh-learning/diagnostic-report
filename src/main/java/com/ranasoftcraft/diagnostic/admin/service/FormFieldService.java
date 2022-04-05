@@ -13,4 +13,6 @@ public interface FormFieldService {
 
 	ReportModuleEntiry saveUpdateReportType(ReportModuleEntiry reportModuleEntiry);
 
+	Iterable<ReportModuleEntiry> getAllReportModuleEntities();
+
 }

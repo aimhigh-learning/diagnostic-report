@@ -3,6 +3,8 @@
  */
 package com.ranasoftcraft.diagnostic.admin.entity;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.util.StringUtils;
 
 import com.ranasoftcraft.diagnostic.patient.entity.PatientReports.ReportType;
 
@@ -47,6 +50,4 @@ public class ReportModuleEntiry {
 	@LastModifiedDate
 	private Long updatedAt;
 	
-	
-
 }

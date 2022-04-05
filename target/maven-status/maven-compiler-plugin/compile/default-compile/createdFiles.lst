@@ -25,10 +25,10 @@ com\ranasoftcraft\diagnostic\patient\repository\PatientInfoRepository.class
 com\ranasoftcraft\diagnostic\security\WebConfig.class
 com\ranasoftcraft\diagnostic\patient\entity\PatientReports.class
 com\ranasoftcraft\diagnostic\generic\controller\UserProfileController.class
-com\ranasoftcraft\diagnostic\security\services\UsersServiceImpl.class
 com\ranasoftcraft\diagnostic\admin\entity\FormFieldMappingEntity.class
 com\ranasoftcraft\diagnostic\admin\service\FormFieldService.class
 com\ranasoftcraft\diagnostic\security\repository\RolesRepository.class
 com\ranasoftcraft\diagnostic\admin\repository\FieldRepository.class
 com\ranasoftcraft\diagnostic\admin\repository\FormRepository.class
+com\ranasoftcraft\diagnostic\security\services\UserServiceImpl.class
 com\ranasoftcraft\diagnostic\security\AuthenticationController.class

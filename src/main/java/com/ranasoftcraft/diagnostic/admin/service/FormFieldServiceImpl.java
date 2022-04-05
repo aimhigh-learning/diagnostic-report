@@ -3,6 +3,7 @@
  */
 package com.ranasoftcraft.diagnostic.admin.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class FormFieldServiceImpl implements FormFieldService {
 			reportModuleEntiry.setId(UUID.randomUUID().toString());
 		}
 		return this.reportModuleRepository.save(reportModuleEntiry);
+	}
+	
+	@Override
+	public Iterable<ReportModuleEntiry> getAllReportModuleEntities() {
+		return reportModuleRepository.findAll();
 	}
 }

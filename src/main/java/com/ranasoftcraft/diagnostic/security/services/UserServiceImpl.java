@@ -31,7 +31,7 @@ import javassist.NotFoundException;
  */
 @Service
 @Transactional
-public class UsersServiceImpl implements UsersService, UserDetailsService {
+public class UserServiceImpl implements UsersService, UserDetailsService {
 
 	@Autowired
 	private UsersRepository usersRepository;

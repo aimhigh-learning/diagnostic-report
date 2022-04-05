@@ -30,10 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("user")).roles("USER")
-//				.and().withUser("player").password(passwordEncoder().encode("player")).roles("USER").and()
-//				.withUser("admin").password(passwordEncoder().encode("nimda")).roles("ADMIN");
-		
 		auth.userDetailsService((UserDetailsService) userService)
 		.passwordEncoder(passwordEncoder());
 	}
@@ -45,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	      .httpBasic().and()
 	      .authorizeRequests()
 	      .antMatchers("/resources/***","/bootstrap-5.0/**","/report/**").permitAll()
-	      .antMatchers("/admin/**").hasRole("ADMIN")
+//	      .antMatchers("/admin/**").hasRole("ADMIN") // todo 
 	      .antMatchers("/anonymous*").anonymous()
 	      .antMatchers("/login*","/signup").permitAll()
 	      .anyRequest().authenticated()
