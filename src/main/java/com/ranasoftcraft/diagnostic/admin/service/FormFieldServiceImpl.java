@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
 import com.ranasoftcraft.diagnostic.admin.repository.FieldRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.FormFieldMappingRepository;
@@ -49,4 +51,20 @@ public class FormFieldServiceImpl implements FormFieldService {
 	public Iterable<ReportModuleEntiry> getAllReportModuleEntities() {
 		return reportModuleRepository.findAll();
 	}
+	
+	@Override
+	public boolean saveUpdateField(final FieldEntiry fieldEntiry) {
+		if(!StringUtils.hasText(fieldEntiry.getId())) {
+			fieldEntiry.setId(UUID.randomUUID().toString());
+		}
+		fieldRepository.save(fieldEntiry);
+		return Boolean.TRUE;
+	}
+	
+	@Override
+	public Iterable<FieldEntiry> fList(org.springframework.data.domain.Pageable pageable) {
+		return fieldRepository.findAll(pageable);
+	}
+	
+	
 }

@@ -79,9 +79,14 @@ public class CommonController {
 	}
 	
 	@GetMapping("/fields")
+	public String fields(Model model) {
+		return "reports-config/fields";
+	}
+	
+	@GetMapping("/forms")
 	public String fields(Model model, @RequestParam(name = "_id") String id) {
 		model.addAttribute("_id", id);
-		return "reports-config/fields";
+		return "reports-config/forms";
 	}
 
 	@GetMapping(path = "/report/pdf")

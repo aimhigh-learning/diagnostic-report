@@ -6,30 +6,26 @@
 		<div class="col-4">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">Home</a></li>
 					<li class="breadcrumb-item active" aria-current="page"><a
-						href="#">Fields</a></li>
+						href="#">Forms</a></li>
 				</ol>
 			</nav>
 		</div>
 		<div class="col-8" style="align-items: flex-end; text-align: right;">
-			<button type="button" class="btn btn-primary"
-				onclick="createEditField()">Create new</button>
+			<button type="button" class="btn btn-primary" onclick="createNewField()">Create
+				new</button>
 
 		</div>
 	</div>
 	<div class="row" style="height: 16px;"></div>
 
-	<div class="row">
-		<div class="col-12">
-			<input type="text" placeholder="Search field" class="form-control"
-				name="search" id="search">
-		</div>
-	</div>
-
-	<div class="row" style="height: 16px;"></div>
-
-	<ul class="list-group" id="fieldL">
-
+	<ul class="list-group">
+		<li class="list-group-item">Cras justo odio</li>
+		<li class="list-group-item">Dapibus ac facilisis in</li>
+		<li class="list-group-item">Morbi leo risus</li>
+		<li class="list-group-item">Porta ac consectetur ac</li>
+		<li class="list-group-item">Vestibulum at eros</li>
 	</ul>
 
 	<div class="row" style="height: 16px;"></div>
@@ -46,8 +42,6 @@
 					field</h5>
 
 			</div>
-
-			<input type="hidden" id="id" />
 
 			<div class="modal-body" id="rBody">
 				<div class="row">
@@ -83,10 +77,9 @@
 
 						<div class="mb-6">
 							<label for="name" class="form-label">Max length</label> <input
-								type="number" class="form-control" name="maxLength"
-								id="maxLength" aria-describedby="maxLengthHelp">
-							<div id="maxLengthHelp" class="form-text">Total how many
-								char allowed !</div>
+								type="number" class="form-control" name="maxLength" id="maxLength"
+								aria-describedby="maxLengthHelp">
+							<div id="maxLengthHelp" class="form-text">Total how many char allowed !</div>
 						</div>
 					</div>
 
@@ -95,8 +88,9 @@
 
 						<div class="mb-6">
 							<label for="description" class="form-label">Is multiple
-								select ?</label> <input type="checkbox" name="isMultiselect"
-								id="isMultiselect" aria-describedby="isMultiselectHelp">
+								select ?</label> <input type="checkbox"
+								name="isMultiselect" id="isMultiselect"
+								aria-describedby="isMultiselectHelp">
 
 							<div id="isMultiselectHelp" class="form-text">If the field
 								is multiselect then please enable this !</div>
@@ -107,8 +101,8 @@
 
 						<div class="mb-6">
 							<label for="description" class="form-label">Is required ?</label>
-							<input type="checkbox" name="isRequired" id="isRequired"
-								aria-describedby="isRequiredHelp">
+							<input type="checkbox" name="isRequired"
+								id="isRequired" aria-describedby="isRequiredHelp">
 
 							<div id="isRequiredHelp" class="form-text">If enable then
 								will make that field as mandatory !</div>
@@ -122,55 +116,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary"
-					onclick="saveUpdateField()"">Save changes</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="modal fade" id="maintainDropValues" tabindex="-1"
-	role="dialog" aria-labelledby="maintainDropValuesTitle"
-	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="maintainDropValuesTitle">Dropdown
-					values</h5>
-
-			</div>
-
-			<input type="hidden" id="fieldId" />
-
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-9">
-						<input type="text" class="form-control" name="value_1"
-							id="value_1">
-					</div>
-
-					<div class="col-3">
-						<a href="#" class="btn btn-outline-danger">Delete</a>
-
-					</div>
-
-				</div>
-
-				<div class="row" style="height: 16px;"></div>
-
-				<div class="row">
-					<div class="col-12">
-						<button type="button" class="btn btn-primary" onclick="">Add
-							new</button>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary"
-					onclick="saveUpdateField()"">Save changes</button>
+					onclick="saveUpdateReport()"">Save changes</button>
 			</div>
 		</div>
 	</div>
