@@ -142,26 +142,16 @@
 
 			<input type="hidden" id="fieldId" />
 
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-9">
-						<input type="text" class="form-control" name="value_1"
-							id="value_1">
-					</div>
+			<div class="modal-body" style="max-height: 400px; overflow: auto;">
+				<form id="dropValFrmCtrl">
+					<div id="dropValBody"></div>
+				</form>
 
-					<div class="col-3">
-						<a href="#" class="btn btn-outline-danger">Delete</a>
-
-					</div>
-
-				</div>
-
-				<div class="row" style="height: 16px;"></div>
 
 				<div class="row">
 					<div class="col-12">
-						<button type="button" class="btn btn-primary" onclick="">Add
-							new</button>
+						<button type="button" class="btn btn-primary"
+							onclick="addNewRow(this)">Add new</button>
 					</div>
 
 				</div>
@@ -170,7 +160,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-primary"
-					onclick="saveUpdateField()"">Save changes</button>
+					onclick="saveUpdateFieldDropVal()">Save changes</button>
 			</div>
 		</div>
 	</div>

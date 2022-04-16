@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
+import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
 import com.ranasoftcraft.diagnostic.admin.service.FormFieldService;
 
@@ -58,5 +60,25 @@ public class ManageReportsRestController {
 		int s = Integer.parseInt(_size);
 		int p = Integer.parseInt(_page);
 		return formFieldService.fList(PageRequest.of(p, s));
+	}
+	
+	@PostMapping(path = {"/field/dropval/save","/field/dropval/update"})
+	public boolean saveFieldDropVal(@RequestBody List<DropValueEntity> dropValueEntities, @RequestParam String fieldId) {
+		return formFieldService.saveFieldDropValues(dropValueEntities, fieldId);
+	}
+	
+	@GetMapping(path = "/field/dropval/_all")
+	public Page<DropValueEntity> fDropValList(@RequestParam String fieldId) {
+		return formFieldService.fDropValList(fieldId);
+	}
+	
+	@PostMapping(path = {"/form/save","/form/update"})
+	public boolean saveForm(@RequestBody FormEntity formEntity) {
+		return formFieldService.saveForms(formEntity);
+	}
+	
+	@GetMapping(path = "/form/_all")
+	public Page<FormEntity> formL(@RequestParam String _id) {
+		return formFieldService.formL(_id);
 	}
 }

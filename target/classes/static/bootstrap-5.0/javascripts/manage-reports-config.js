@@ -1,6 +1,10 @@
 
 let currentReport = null;
 
+
+let dropValues = [];
+
+
 $(document).ready(function() {
 	if(window.location.pathname === '/fields') {
 		fieldList();
@@ -38,7 +42,20 @@ const createEditField = (data) => {
 
 const maintainDropValues = (fieldId)=>{
 	$('#maintainDropValues').modal('show');
+	dropValues = [];
+	$('#dropValBody').html('');
 	$('#fieldId').val(fieldId || '');
+	
+	$.ajax({		
+		url : `/admin/manage/report/field/dropval/_all?fieldId=${fieldId}`,
+		method : 'get',
+		dataType : 'json',
+		contentType : "application/json",
+		success : function(data) {
+			data?.content?.forEach(d=> addNewRow(d));
+		}
+
+	});
 }
 
 
@@ -95,7 +112,7 @@ const reportModuleList = () => {
 
 const moduelP = (report) =>{
 	return `
-		<div class="col-4">
+		<div class="col-4" style="padding:13px">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">${report.reportType}</h5>
@@ -176,4 +193,78 @@ const fieldP = (f) =>{
 			
 			</li>
 		`;
+}
+
+
+const addNewRow = (data)=>{
+	dropValues.push({
+		id: data?.id || '',
+		fieldId: data?.fieldId || '',
+		value: data?.value || '',
+		isActive: data?.isActive || false
+	});
+	
+	reRenderDropValues();
+}
+
+const removeDropVal = (indx) =>{
+	dropValues.splice(parseInt(indx),1);
+	reRenderDropValues();
+}
+
+const reRenderDropValues = () =>{
+	let html = ``;
+	dropValues.forEach((d, idx)=>{
+		html += `
+		<div class="row">
+			<div class="col-9">
+				<input type="text" class="form-control" name="value_${idx}" value="${d.value}"
+							id="value_1">
+			</div>
+			<div class="col-3">
+				<a href="#" class="btn btn-outline-danger" onClick="removeDropVal('${idx}')">Delete</a>
+			</div>
+		</div>
+		<div class="row" style="height: 16px;"></div>
+		`;
+	})
+	$('#dropValBody').html(html);
+	
+}
+
+
+const saveUpdateFieldDropVal = () =>{
+	const array = [];
+	
+	$.each($('#dropValFrmCtrl').serializeArray(), function(i, field) {
+		array.push(field.value || '')
+	})
+	
+	const request = [];
+	const activeFieldId = $('#fieldId').val() || '';
+	if(!activeFieldId) {
+		throw new Error(`Field id must be required ... `);
+	}
+	array.forEach(r=>{
+		request.push({
+			fieldId: activeFieldId,
+			value: r,
+			isActive: true
+		});
+	});
+	
+	
+	$.ajax({		
+		url : `/admin/manage/report/field/dropval/save?fieldId=${activeFieldId}`,
+		method : 'post',
+		dataType : 'json',
+		data : JSON.stringify(request),
+		contentType : "application/json",
+		success : function(data) {
+			console.log(`Saved successfully .. `);
+			$('#maintainDropValues').modal('hide');
+			dropValues = [];
+		}
+
+	});
 }

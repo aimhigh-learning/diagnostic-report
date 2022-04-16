@@ -4,6 +4,7 @@ D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\pa
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\repository\RolesRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\services\UsersService.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\WebConfig.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\repository\DropValueRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\generic\controller\UserProfileController.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\patient\service\PatientInfoServiceImpl.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\repository\UsersRepository.java
@@ -14,6 +15,7 @@ D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\se
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\FieldEntiry.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\service\FormFieldService.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\FormEntity.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\DropValueEntity.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\service\FormFieldServiceImpl.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\SecurityConfig.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\controller\ManageReportsRestController.java
