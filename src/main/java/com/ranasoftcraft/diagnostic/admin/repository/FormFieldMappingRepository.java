@@ -13,4 +13,5 @@ import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
  */
 public interface FormFieldMappingRepository extends PagingAndSortingRepository<FormFieldMappingEntity, String> {
 
+	void deleteByFormId(String fieldId);
 }

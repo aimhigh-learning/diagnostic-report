@@ -81,6 +81,51 @@
 
 
 
+<div class="modal fade" id="mapFieldToForm" tabindex="-1" role="dialog"
+	aria-labelledby="mapFieldToFormTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="mapFieldToFormTitle">Map fields</h5>
+
+			</div>
+
+			<input type="hidden" id="formId" />
+
+			<div class="modal-body" id="rBody" style="height: 500px; overflow: auto;">
+
+				<div class="row">
+					<div class="col-5">
+						<h5>Un assigned fields</h5>
+						<ul class="list-group" id="fieldL">
+							
+						</ul>
+					</div>
+
+					<div class="col-2"></div>
+
+					<div class="col-5">
+						<h5>Assigned fields</h5>
+						<ul class="list-group" id="aFieldL">
+							
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary"
+					onclick="saveUpdateForm()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 <script src="bootstrap-5.0/js/jquery-3.6.0.min.js"></script>
 
 <script src="bootstrap-5.0/javascripts/form.js"></script>

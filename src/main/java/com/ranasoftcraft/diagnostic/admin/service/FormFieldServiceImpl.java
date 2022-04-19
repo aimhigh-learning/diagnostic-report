@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
+import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
 import com.ranasoftcraft.diagnostic.admin.repository.DropValueRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.FieldRepository;
@@ -110,5 +111,18 @@ public class FormFieldServiceImpl implements FormFieldService {
 	public Page<FormEntity> formL(String rTypeId) {
 		return formRepository.findByReportModuleId(rTypeId, PageRequest.of(0, Integer.MAX_VALUE));
 	}
+	
+	@Override
+	public boolean saveUpdateFormFieldMapping(String formId ,  final List<FormFieldMappingEntity> formFieldMappingEntity) {
+		formFieldMappingRepository.deleteByFormId(formId);
+		
+		formFieldMappingEntity.forEach(f->{
+			f.setUuid(StringUtils.hasText(f.getUuid()) ? f.getUuid() : UUID.randomUUID().toString());
+		});
+		formFieldMappingRepository.saveAll(formFieldMappingEntity);
+		return Boolean.TRUE;		
+	}
+	
+	
 	
 }

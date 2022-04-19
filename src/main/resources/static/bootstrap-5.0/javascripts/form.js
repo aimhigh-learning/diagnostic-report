@@ -1,5 +1,7 @@
 let reportModuleId = '';
 
+let assignedFldLst  = [];
+
 $(document).ready(function() {
 
 	const queryString = window.location.search;
@@ -16,6 +18,14 @@ const createUpdateForm = (formId, name , isActive) =>{
 	$('#name').val(name || '');
 	$('#isActive').prop('checked', isActive === true ?true : false);
 }
+
+const mapFormFields = (formId) => {
+	$('#mapFieldToForm').modal('show');
+	$('#formId').val(formId || '');
+	fieldList();
+}
+ 
+
 
 const saveUpdateForm = () =>{
 	const request = {
@@ -60,10 +70,11 @@ const formList = () =>{
 							
 							<div class="col-3" style="text-align:right;">
 								${valueBtnS}
+								<a href="#" class="btn btn-outline-secondary" onClick="mapFormFields('${d.id}')">Map fields</a>
 								<a href="#" class="btn btn-outline-info" onClick="createUpdateForm('${d.id}','${d.name}',${d.isActive})">Edit</a>
 								<a href="#" class="btn btn-outline-danger">Delete</a>
 							</div>
-						<div>
+						</div>
 					</li>
 				`;
 			});
@@ -71,4 +82,86 @@ const formList = () =>{
 		}
 
 	});
+}
+
+
+const fieldList = () => {
+	
+	$.ajax({
+		
+		url : '/admin/manage/report/field/_all',
+		method : 'get',
+		dataType : 'json',
+		contentType : "application/json",
+		success : function(data) {
+			let finalH = ``;
+			data?.content?.forEach(r=>{
+				finalH += fieldP(r);
+			});
+			$('#fieldL').html(finalH);
+		}
+
+	});
+}
+
+const fieldP = (f) =>{
+	return `
+			<li class="list-group-item" _id="'${f.id}'">
+				<div class="row">
+					<div class="col-9">
+						${f.name}
+					</div>
+					
+					<div class="col-3" style="text-align:right;">
+						<a href="#" class="btn btn-outline-info btn-sm" onClick="addField('${f.id}','${f.name}')">Add</a>
+					</div>
+				<div>
+			
+			</li>
+		`;
+}
+
+
+const addField = (fieldId, name) =>{
+	if(assignedFldLst.find(f=> f.fieldId === fieldId)) {
+		throw new Error(`The ${fieldId} is already assigned `);
+	}
+	assignedFldLst.push({
+		uuid:'',
+		formId:$('#formId').val(),
+		fieldId: fieldId,
+		fldOrder:assignedFldLst.length,
+		name: name
+	});
+	console.log(assignedFldLst);
+	drawAssignedFld();
+	
+}
+
+const removeAssignedFld = (fieldId) =>{
+	const idx = assignedFldLst.findIndex(f=> f.fieldId === fieldId);
+	assignedFldLst.splice(idx,1);
+	drawAssignedFld();
+	
+}
+
+const drawAssignedFld = () =>{
+	let html = ``;
+	assignedFldLst.forEach(f=>{
+		html += `
+			<li class="list-group-item" _id="assign_'${f.fieldId}'">
+				<div class="row">
+					<div class="col-8">
+						${f.name}
+					</div>
+					
+					<div class="col-4" style="text-align:right;">
+						<a href="#" class="btn btn-outline-danger btn-sm" onClick="removeAssignedFld('${f.fieldId}')">Remove</a>
+					</div>
+				<div>
+			
+			</li>
+		`;
+	});
+	$('#aFieldL').html(html);
 }

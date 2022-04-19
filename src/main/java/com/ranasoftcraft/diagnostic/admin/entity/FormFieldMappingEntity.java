@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 /**
  * @author sandeep.rana
  *
@@ -16,6 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "form_field_mappings")
+@Data
 public class FormFieldMappingEntity implements Serializable {
 
 	/**

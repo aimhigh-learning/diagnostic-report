@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
+import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
 /**
  * @author sandeep.rana
@@ -33,5 +34,7 @@ public interface FormFieldService {
 	boolean saveForms(FormEntity formEntity);
 
 	Page<FormEntity> formL(String rTypeId);
+
+	boolean saveUpdateFormFieldMapping(String formId, List<FormFieldMappingEntity> formFieldMappingEntity);
 
 }
