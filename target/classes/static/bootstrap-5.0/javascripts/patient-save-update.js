@@ -1,3 +1,9 @@
+$(document).ready(function() {
+	reportModuleList();
+});
+
+
+
 function reset(obj) {
 	$("#patient-form").reset();
 }
@@ -69,4 +75,24 @@ function signUp(obj) {
 		}
 	});
 
+}
+
+
+const reportModuleList = () => {
+	
+	$.ajax({
+		
+		url : '/admin/manage/report/_all',
+		method : 'get',
+		dataType : 'json',
+		contentType : "application/json",
+		success : function(data) {
+			let html = ``;
+			data.forEach(f=>{
+				html +=`<option value="${f.id}">${f.name}</option>`;
+			});
+			$('#reportType').html(html);
+		}
+
+	});
 }

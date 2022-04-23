@@ -8,6 +8,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry.FieldType;
 
 import lombok.Data;
 
@@ -34,6 +37,12 @@ public class FormFieldMappingEntity implements Serializable {
 	private String fieldId;
 	
 	private Integer fldOrder;
+	
+	@Transient
+	private String name;
+	
+	@Transient
+	private FieldType fieldType;
 	
 
 }

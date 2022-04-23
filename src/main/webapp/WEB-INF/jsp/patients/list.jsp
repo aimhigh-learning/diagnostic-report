@@ -31,26 +31,28 @@
 <div class="modal fade" id="generateReportModal" tabindex="-1"
 	role="dialog" aria-labelledby="exampleModalCenterTitle"
 	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="generateReportModalTitle">Generate
-					report (TODO)</h5>
+					report</h5>
 
 			</div>
-			
-			
-			
-			<div class="modal-body" id="rBody">
-				
-				
+
+			<input type="hidden" id="reportModuelId"/>
+			<input type="hidden" id="patientId"/>
+			<input type="hidden" id="reportId"/>
+
+			<div class="modal-body" style="overflow: auto; height: 650px">
+				<form id="rBody"></form>
+
 			</div>
-			
-			
-			
+
+
+
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" onClick="saveReportData()">Generate</button>
 			</div>
 		</div>
 	</div>
@@ -65,5 +67,7 @@
 	src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap5.min.js"></script>
 
 <script src="bootstrap-5.0/javascripts/patient-list.js"></script>
+
+<script src="bootstrap-5.0/javascripts/fields.js"></script>
 
 <%@include file="/WEB-INF/jsp/common/footer.jsp"%>

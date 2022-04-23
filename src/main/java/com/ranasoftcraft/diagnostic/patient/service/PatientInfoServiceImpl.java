@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,6 +23,7 @@ import org.springframework.util.StringUtils;
 
 import com.ranasoftcraft.diagnostic.patient.entity.PatientInfo;
 import com.ranasoftcraft.diagnostic.patient.entity.PatientReports;
+import com.ranasoftcraft.diagnostic.patient.entity.PatientReports.Status;
 import com.ranasoftcraft.diagnostic.patient.repository.PatientInfoRepository;
 import com.ranasoftcraft.diagnostic.patient.repository.PatientReportsRepository;
 import com.ranasoftcraft.diagnostic.security.entity.Roles;
@@ -70,7 +72,7 @@ public class PatientInfoServiceImpl implements PatientInfoService {
 				r.setReportId((String) UUID.randomUUID().toString().subSequence(0, 24));
 			});
 			patientReportsRepository.saveAll(requestReport);
-			log.info("After all report type saved {} ", requestReport.stream().map(m-> m.getReportType()).collect(Collectors.toList()));
+//			log.info("After all report type saved {} ", requestReport.stream().map(m-> m.getReportType()).collect(Collectors.toList()));
 		}
 		
 		return patientInfoRepository.save(user.getPatientInfo());
@@ -90,6 +92,16 @@ public class PatientInfoServiceImpl implements PatientInfoService {
 			fr.setReports(patientReportsRepository.findByPatientId(fr.getPatientId()));
 		});
 		return lst;
+	}
+	
+	@Override
+	public void updateStatus(Status status, String reportId ) {
+		Optional<PatientReports> pReportsOps =  patientReportsRepository.findById(reportId);
+		if(pReportsOps.isPresent()) {
+			PatientReports pr =  pReportsOps.get();
+			pr.setStatus(status);
+			saveUpdateRepory(pr);
+		}
 	}
 	
 }

@@ -9,6 +9,7 @@ $(document).ready(function() {
 	
 	// get the forms list 
 	formList();
+	
 });
 
 
@@ -23,6 +24,9 @@ const mapFormFields = (formId) => {
 	$('#mapFieldToForm').modal('show');
 	$('#formId').val(formId || '');
 	fieldList();
+	
+	// get assigned field list 
+	getAssignedFeild();
 }
  
 
@@ -122,6 +126,24 @@ const fieldP = (f) =>{
 }
 
 
+const getAssignedFeild = () => {
+	const formId = $('#formId').val();
+	$.ajax({
+		
+		url : `/admin/manage/report/form/field/assign/_all?formId=${formId}`,
+		method : 'get',
+		dataType : 'json',
+		contentType : "application/json",
+		success : function(data) {
+			assignedFldLst = [...data?.content];
+			drawAssignedFld();
+		}
+
+	});
+}
+
+
+
 const addField = (fieldId, name) =>{
 	if(assignedFldLst.find(f=> f.fieldId === fieldId)) {
 		throw new Error(`The ${fieldId} is already assigned `);
@@ -164,4 +186,23 @@ const drawAssignedFld = () =>{
 		`;
 	});
 	$('#aFieldL').html(html);
+}
+
+
+
+const saveTheAssignedFields = () =>{
+	const request = assignedFldLst;
+	const formId = $('#formId').val();
+	$.ajax({
+		
+		url : `/admin/manage/report/form/field/assign/save?formId=${formId}`,
+		method : 'post',
+		dataType : 'json',
+		contentType : "application/json",
+		data : JSON.stringify(request),
+		success : function(data) {
+			$('#mapFieldToForm').modal('hide');
+		}
+
+	});
 }

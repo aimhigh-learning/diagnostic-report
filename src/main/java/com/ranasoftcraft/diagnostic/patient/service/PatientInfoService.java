@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.ranasoftcraft.diagnostic.patient.entity.PatientInfo;
 import com.ranasoftcraft.diagnostic.patient.entity.PatientReports;
+import com.ranasoftcraft.diagnostic.patient.entity.PatientReports.Status;
 import com.ranasoftcraft.diagnostic.security.entity.Users;
 
 /**
@@ -20,5 +21,7 @@ public interface PatientInfoService {
 	PatientReports saveUpdateRepory(PatientReports patientReports);
 
 	Page<PatientInfo> getPatientList(int _page, int _size);
+
+	void updateStatus(Status status, String reportId);
 
 }

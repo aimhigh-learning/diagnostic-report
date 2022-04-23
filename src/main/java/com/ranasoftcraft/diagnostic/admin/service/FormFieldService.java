@@ -13,6 +13,7 @@ import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
+import com.ranasoftcraft.diagnostic.patient.entity.GeneratedReportTransactionsEntity;
 /**
  * @author sandeep.rana
  *
@@ -36,5 +37,14 @@ public interface FormFieldService {
 	Page<FormEntity> formL(String rTypeId);
 
 	boolean saveUpdateFormFieldMapping(String formId, List<FormFieldMappingEntity> formFieldMappingEntity);
+
+	Page<FormFieldMappingEntity> getAssignedFields(String formId);
+
+	Page<FormFieldMappingEntity> getDefaultFormBasedOnReportType(String reportTypeId);
+
+	boolean generateReport(String reportId, String patientId, String reportModuelId,
+			List<GeneratedReportTransactionsEntity> data);
+
+	List<GeneratedReportTransactionsEntity> getGenerateReport(String reportId, String patientId, String reportModuelId);
 
 }

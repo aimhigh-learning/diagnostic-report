@@ -112,9 +112,11 @@
 						<label for="reportType" class="form-label">Report for</label> <select
 							class="form-control" name="reportType" multiple id="reportType"
 							aria-describedby="reportTypeHelp">
-							<option value="blodd_glucose">Blood Glucose</option>
-							<option value="widle_test">Widle Test</option>
-							<option value="other">Other</option>
+							<!-- 
+								<option value="blodd_glucose">Blood Glucose</option>
+								<option value="widle_test">Widle Test</option>
+								<option value="other">Other</option>
+							 -->
 						</select>
 						<div id="reportTypeHelp" class="form-text">Please select the type of report !!</div>
 					</div>

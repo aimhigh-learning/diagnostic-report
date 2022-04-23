@@ -35,36 +35,11 @@ public class PatientReports implements Serializable {
 	@NotNull
 	private String patientId;
 
-	@Enumerated(EnumType.STRING)
-	private ReportType reportType;
-
-	private Double fbgGlucoseValue;
-
-	private String fbgUnit;
-
-	private Integer fbgRangeMin;
-
-	private Integer fbgRangeMax;
-
-	private Integer sTyphiOAntigenCnt;
-
-	private Integer sTyphiOAntigenValue;
-
-	private Integer sTyphHAntigenCnt;
-
-	private Integer sTyphiHAntigenValue;
-
-	private Integer sTyphiAHAntigenCnt;
-
-	private Integer sTyphiAHAntigenValue;
-
-	private Integer sTyphiBHAntigenValue;
-
-	private Integer sTyphiBHAntigenCnt;
-
-	private String inteprentationM;
-
-	private String inteprentationR;
+//	@Enumerated(EnumType.STRING)
+//	private ReportType reportType;
+	
+	private String reportType;
+	
 
 	@Enumerated(EnumType.STRING)
 	private Status status;
