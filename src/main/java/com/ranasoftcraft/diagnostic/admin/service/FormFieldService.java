@@ -3,16 +3,19 @@
  */
 package com.ranasoftcraft.diagnostic.admin.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
+import com.ranasoftcraft.diagnostic.admin.entity.ReportTemplatesEntity;
 import com.ranasoftcraft.diagnostic.patient.entity.GeneratedReportTransactionsEntity;
 /**
  * @author sandeep.rana
@@ -46,5 +49,9 @@ public interface FormFieldService {
 			List<GeneratedReportTransactionsEntity> data);
 
 	List<GeneratedReportTransactionsEntity> getGenerateReport(String reportId, String patientId, String reportModuelId);
+
+	boolean uploadTemplate(String reportModuleId, MultipartFile multipartFile) throws IOException;
+
+	ReportTemplatesEntity downloadTemplate(String reportModuleId);
 
 }

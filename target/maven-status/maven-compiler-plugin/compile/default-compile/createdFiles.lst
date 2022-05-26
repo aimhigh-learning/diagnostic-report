@@ -17,6 +17,7 @@ com\ranasoftcraft\diagnostic\admin\entity\FormFieldMappingEntity.class
 com\ranasoftcraft\diagnostic\admin\repository\FieldRepository.class
 com\ranasoftcraft\diagnostic\admin\entity\DropValueEntity.class
 com\ranasoftcraft\diagnostic\security\AuthenticationController.class
+com\ranasoftcraft\diagnostic\admin\entity\ReportTemplatesEntity.class
 com\ranasoftcraft\diagnostic\admin\repository\DropValueRepository.class
 com\ranasoftcraft\diagnostic\admin\entity\FormEntity.class
 com\ranasoftcraft\diagnostic\patient\entity\PatientReports$Status.class
@@ -30,7 +31,10 @@ com\ranasoftcraft\diagnostic\security\SecurityConfig.class
 com\ranasoftcraft\diagnostic\patient\repository\PatientInfoRepository.class
 com\ranasoftcraft\diagnostic\security\WebConfig.class
 com\ranasoftcraft\diagnostic\generic\controller\UserProfileController.class
+com\ranasoftcraft\diagnostic\patient\repository\GeneratedReportTransactionsRepository.class
 com\ranasoftcraft\diagnostic\admin\service\FormFieldService.class
 com\ranasoftcraft\diagnostic\security\repository\RolesRepository.class
 com\ranasoftcraft\diagnostic\admin\repository\FormRepository.class
+com\ranasoftcraft\diagnostic\admin\repository\ReportTemplatesRepository.class
+com\ranasoftcraft\diagnostic\patient\entity\GeneratedReportTransactionsEntity.class
 com\ranasoftcraft\diagnostic\security\services\UserServiceImpl.class

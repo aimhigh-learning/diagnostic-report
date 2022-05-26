@@ -3,24 +3,35 @@
  */
 package com.ranasoftcraft.diagnostic.admin.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
+import com.ranasoftcraft.diagnostic.admin.entity.ReportTemplatesEntity;
 import com.ranasoftcraft.diagnostic.admin.service.FormFieldService;
 import com.ranasoftcraft.diagnostic.patient.entity.GeneratedReportTransactionsEntity;
 
@@ -112,5 +123,22 @@ public class ManageReportsRestController {
 			@RequestParam String reportModuleId) {
 		return formFieldService.getGenerateReport(reportId, patientId, reportModuleId);
 	}
+	
+	
+	@PostMapping(path = {"/template/_upload"})
+	public boolean saveTheTemplate(@RequestParam String reportId, @RequestPart MultipartFile file) throws IOException {
+		return formFieldService.uploadTemplate(reportId, file);
+	}
+	
+	
+	@GetMapping(path = {"/template/_download"}, produces = {"application/vnd.openxmlformats-officedocument.wordprocessingml.document"})
+	public ResponseEntity<byte[]> getTemplate(@RequestParam String reportId) throws IOException {
+		ReportTemplatesEntity reportTemplatesEntity = formFieldService.downloadTemplate(reportId);
+		return ResponseEntity.ok()
+	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" +  reportTemplatesEntity.getFileName() + "." +reportTemplatesEntity.getFileType() + "\"")
+	            .body(reportTemplatesEntity.getData()); 
+	}
+	
 	
 }

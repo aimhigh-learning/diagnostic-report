@@ -73,6 +73,45 @@
 	</div>
 </div>
 
+
+<div class="modal fade" id="maintainTemplates" tabindex="-1"
+	role="dialog" aria-labelledby="maintainTemplatesTitles"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="maintainTemplatesTitles">Manage
+					templates</h5>
+
+			</div>
+			<input type="hidden" id="reportModuleId"/>
+
+			<div class="modal-body" style="max-height: 400px; overflow: auto;">
+				<form id="templateFrmCtrl">
+					<div class="row">
+						<div class="col-10">
+							<input type="file" class="form-control" name="file"
+								id="file">
+						</div>
+
+						
+						<div class="col-2">
+							<a href="#" class="btn btn-outline-success"
+								onClick="downloadTemplate()">Get</a>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary"
+					onclick="saveReportTemplate()">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script src="bootstrap-5.0/js/jquery-3.6.0.min.js"></script>
 
 <script src="bootstrap-5.0/javascripts/manage-reports-config.js"></script>

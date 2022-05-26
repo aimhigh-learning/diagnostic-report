@@ -3,6 +3,7 @@
  */
 package com.ranasoftcraft.diagnostic.admin.service;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -17,21 +18,26 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ranasoftcraft.diagnostic.admin.entity.DropValueEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FieldEntiry;
 import com.ranasoftcraft.diagnostic.admin.entity.FormEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.FormFieldMappingEntity;
 import com.ranasoftcraft.diagnostic.admin.entity.ReportModuleEntiry;
+import com.ranasoftcraft.diagnostic.admin.entity.ReportTemplatesEntity;
 import com.ranasoftcraft.diagnostic.admin.repository.DropValueRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.FieldRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.FormFieldMappingRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.FormRepository;
 import com.ranasoftcraft.diagnostic.admin.repository.ReportModuleRepository;
+import com.ranasoftcraft.diagnostic.admin.repository.ReportTemplatesRepository;
 import com.ranasoftcraft.diagnostic.patient.entity.GeneratedReportTransactionsEntity;
 import com.ranasoftcraft.diagnostic.patient.entity.PatientReports.Status;
 import com.ranasoftcraft.diagnostic.patient.repository.GeneratedReportTransactionsRepository;
 import com.ranasoftcraft.diagnostic.patient.service.PatientInfoService;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author sandeep.rana
@@ -39,6 +45,7 @@ import com.ranasoftcraft.diagnostic.patient.service.PatientInfoService;
  */
 @Service
 @Transactional
+@Slf4j
 public class FormFieldServiceImpl implements FormFieldService {
 
 	@Autowired
@@ -62,6 +69,9 @@ public class FormFieldServiceImpl implements FormFieldService {
 	
 	@Autowired
 	private PatientInfoService patientInfoService;
+	
+	@Autowired
+	private ReportTemplatesRepository reportTemplatesRepository;
 	
 	
 	@Override
@@ -185,4 +195,31 @@ public class FormFieldServiceImpl implements FormFieldService {
 	public List<GeneratedReportTransactionsEntity> getGenerateReport(String reportId , String patientId , String reportModuelId) {
 		return generatedReportTransactionsRepository.findByPatientIdAndReportIdAndReportModuleId(patientId, reportId, reportModuelId);
 	}
+	
+	@Override
+	public boolean uploadTemplate(String reportModuleId, MultipartFile multipartFile) throws IOException {
+		// delete the exiting one 
+		reportTemplatesRepository.deleteByReportModuleId(reportModuleId);
+		
+		// save the new 
+		ReportTemplatesEntity reportTemplatesEntity = new ReportTemplatesEntity();
+		reportTemplatesEntity.setReportModuleId(reportModuleId);
+		reportTemplatesEntity.setDocId(UUID.randomUUID().toString());
+		reportTemplatesEntity.setData(multipartFile.getBytes());
+
+		System.out.println(new String(multipartFile.getBytes()));
+		
+		log.info("Byte[] data ... ", new String(multipartFile.getBytes()));
+		
+		reportTemplatesEntity.setFileName(multipartFile.getOriginalFilename());
+		reportTemplatesEntity.setIsActive(Boolean.TRUE); reportTemplatesEntity.setFileType(multipartFile.getContentType());
+		reportTemplatesRepository.save(reportTemplatesEntity);
+		return Boolean.TRUE;
+	}
+	
+	@Override
+	public ReportTemplatesEntity downloadTemplate(String reportModuleId) {
+		return reportTemplatesRepository.findByReportModuleIdAndIsActive(reportModuleId, Boolean.TRUE);
+	}
+	
 }

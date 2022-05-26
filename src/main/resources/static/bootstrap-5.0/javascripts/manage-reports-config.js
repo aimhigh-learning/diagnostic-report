@@ -4,6 +4,7 @@ let currentReport = null;
 
 let dropValues = [];
 
+let templates = [];
 
 $(document).ready(function() {
 	if(window.location.pathname === '/fields') {
@@ -18,6 +19,11 @@ $(document).ready(function() {
 const createNew = () => {
 	$('#createUpdateReportModule').modal('show')
 	currentReport = null;
+}
+
+const maintainTemplates = (reportModuleId) => {
+	$('#maintainTemplates').modal('show')
+	$('#reportModuleId').val(reportModuleId);
 }
 
 const createEditField = (data) => {
@@ -119,6 +125,7 @@ const moduelP = (report) =>{
 					<p class="card-text">${report.description}</p>
 					<a href="#" class="btn btn-info" onclick="editReport('${report.id}','${report.name}', '${report.description}')">Edit</a>
 					<a href="forms?_id=${report.id}" class="btn btn-primary" style="">Forms</a>
+					<a href="#" class="btn btn-secondary" style="" onClick="maintainTemplates('${report.id}')">Template</a>
 				</div>
 			</div>
 
@@ -267,4 +274,40 @@ const saveUpdateFieldDropVal = () =>{
 		}
 
 	});
+}
+
+
+/**
+ * Save the report template for that report module .... 
+ */
+const saveReportTemplate = () =>{
+
+	const formData = new FormData();
+	formData.append('file',$('#file')[0].files[0]);
+	
+	const reportId = $('#reportModuleId').val().trim() || '';
+	
+	$.ajax({		
+		url : `/admin/manage/report/template/_upload?reportId=${reportId}`,
+		method : 'post',
+		data : formData,
+		 processData: false,
+		 contentType: false,
+		success : function(data) {
+			console.log(data);
+			$('#maintainTemplates').modal('hide')
+		}
+
+	});
+	
+}
+
+
+const downloadTemplate = () => {
+	const reportId = $('#reportModuleId').val().trim() || '';
+	const downloadLink = document.createElement('a');
+	downloadLink.href = `/admin/manage/report/template/_download?reportId=${reportId}`;
+	document.body.appendChild(downloadLink);
+	downloadLink.click();
+	downloadLink.remove();
 }

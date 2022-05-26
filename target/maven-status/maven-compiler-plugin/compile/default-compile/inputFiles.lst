@@ -3,13 +3,17 @@ D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\pa
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\patient\entity\PatientReports.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\repository\RolesRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\services\UsersService.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\patient\entity\GeneratedReportTransactionsEntity.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\WebConfig.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\repository\DropValueRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\generic\controller\UserProfileController.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\patient\service\PatientInfoServiceImpl.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\repository\UsersRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\repository\FormFieldMappingRepository.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\patient\repository\GeneratedReportTransactionsRepository.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\repository\ReportTemplatesRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\ReportModuleEntiry.java
+D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\ReportTemplatesEntity.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\repository\FormRepository.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\security\entity\Roles.java
 D:\Personal\Apps\diagnostic-report\src\main\java\com\ranasoftcraft\diagnostic\admin\entity\FieldEntiry.java
