@@ -173,11 +173,13 @@ const drawAssignedFld = () =>{
 		html += `
 			<li class="list-group-item" _id="assign_'${f.fieldId}'">
 				<div class="row">
-					<div class="col-8">
+					<div class="col-4">
 						${f.name}
+						<p style="display:none;" id="copy_${f.fieldId}" >${f.fieldId}</p>
 					</div>
 					
-					<div class="col-4" style="text-align:right;">
+					<div class="col-8" style="text-align:right;">
+						<a href="#" class="btn btn-outline-success btn-sm" onClick="copyToClipboard('${f.fieldId}')" title="Copy field id ">Ctrl+C</a>
 						<a href="#" class="btn btn-outline-danger btn-sm" onClick="removeAssignedFld('${f.fieldId}')">Remove</a>
 					</div>
 				<div>
@@ -188,6 +190,12 @@ const drawAssignedFld = () =>{
 	$('#aFieldL').html(html);
 }
 
+const  copyToClipboard = (fieldId)=> {
+    var copyText = document.getElementById(`copy_`+ fieldId).value;
+    navigator.clipboard.writeText(copyText).then(() => {
+        console.log(copyText);
+    });
+ }
 
 
 const saveTheAssignedFields = () =>{

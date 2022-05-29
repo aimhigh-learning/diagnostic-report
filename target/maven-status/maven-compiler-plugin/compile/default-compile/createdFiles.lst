@@ -1,9 +1,8 @@
-com\ranasoftcraft\diagnostic\admin\service\FormFieldServiceImpl.class
 com\ranasoftcraft\diagnostic\patient\entity\PatientReports$ReportType.class
 com\ranasoftcraft\diagnostic\admin\repository\FormFieldMappingRepository.class
-com\ranasoftcraft\diagnostic\admin\entity\FieldEntiry$FieldType.class
 com\ranasoftcraft\diagnostic\admin\controller\ManageReportsRestController.class
 com\ranasoftcraft\diagnostic\security\repository\UsersRepository.class
+com\ranasoftcraft\diagnostic\generic\unitility\SystemFields.class
 com\ranasoftcraft\diagnostic\patient\repository\PatientReportsRepository.class
 com\ranasoftcraft\diagnostic\admin\repository\ReportModuleRepository.class
 com\ranasoftcraft\diagnostic\generic\controller\CommonController.class
@@ -11,7 +10,6 @@ com\ranasoftcraft\diagnostic\patient\entity\PatientInfo$Geneder.class
 com\ranasoftcraft\diagnostic\security\entity\Roles.class
 com\ranasoftcraft\diagnostic\patient\entity\PatientInfo.class
 com\ranasoftcraft\diagnostic\admin\entity\ReportModuleEntiry.class
-com\ranasoftcraft\diagnostic\admin\entity\FieldEntiry.class
 com\ranasoftcraft\diagnostic\patient\entity\PatientReports.class
 com\ranasoftcraft\diagnostic\admin\entity\FormFieldMappingEntity.class
 com\ranasoftcraft\diagnostic\admin\repository\FieldRepository.class

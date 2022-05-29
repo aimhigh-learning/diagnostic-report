@@ -141,4 +141,15 @@ public class ManageReportsRestController {
 	}
 	
 	
+	
+	@GetMapping(path = {"/download/generated/report"}, produces = {"application/vnd.openxmlformats-officedocument.wordprocessingml.document"})
+	public ResponseEntity<byte[]> downloadGeneratedReport(@RequestParam String reportId, @RequestParam String patientId , @RequestParam String reportModuleId) throws IOException {
+		byte[] data =   formFieldService.downloadGeneratedReport(reportModuleId, patientId, reportId);
+		return ResponseEntity.ok()
+	            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+	            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + patientId  + ".application_vnd.openxmlformats-officedocument.wordprocessingml")
+	            .body(data); 
+	} 
+	
+	
 }

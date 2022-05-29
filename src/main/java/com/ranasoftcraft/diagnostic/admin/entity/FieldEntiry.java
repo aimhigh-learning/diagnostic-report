@@ -67,7 +67,7 @@ public class FieldEntiry implements Serializable {
 	}
 	
 	
-	enum FieldType {
+	public enum FieldType {
 		inpput_text,
 		dropdown,
 		input_numeric,

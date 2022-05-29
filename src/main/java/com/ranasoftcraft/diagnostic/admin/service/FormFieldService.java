@@ -54,4 +54,6 @@ public interface FormFieldService {
 
 	ReportTemplatesEntity downloadTemplate(String reportModuleId);
 
+	byte[] downloadGeneratedReport(String reportModuleId, String patientId, String reportId);
+
 }
